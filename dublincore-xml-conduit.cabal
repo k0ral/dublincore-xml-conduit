@@ -11,6 +11,10 @@ build-type:          Simple
 extra-source-files:  README.md
 cabal-version:       >=1.10
 
+source-repository head
+  type:     git
+  location: git://github.com/k0ral/dublincore-xml-conduit.git
+
 library
   exposed-modules:
     Text.XML.DublinCore
