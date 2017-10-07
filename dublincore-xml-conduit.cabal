@@ -22,7 +22,7 @@ library
     Text.XML.DublinCore.Conduit.Render
   -- other-modules:
   -- other-extensions:
-  build-depends:       base >= 4.8 && < 5, conduit, conduit-combinators, safe-exceptions, time >= 1.5, text, timerep >= 2.0, uri-bytestring, xml-conduit, xml-types
+  build-depends:       base >= 4.8 && < 5, conduit, conduit-combinators, safe-exceptions, time >= 1.5, text, timerep >= 2.0, uri-bytestring, xml-conduit >= 1.5, xml-types
   hs-source-dirs:      src
   default-language:    Haskell2010
 
