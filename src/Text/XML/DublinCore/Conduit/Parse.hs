@@ -29,7 +29,7 @@ module Text.XML.DublinCore.Conduit.Parse
 -- {{{ Imports
 import           Text.XML.DublinCore
 
-import           Conduit                hiding (throwM)
+import           Conduit
 import           Control.Applicative
 import           Control.Exception.Safe as Exception
 import           Data.Text

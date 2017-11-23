@@ -8,7 +8,6 @@ import           Data.Monoid
 import           Data.Text
 import           Data.Time.Clock
 import           Data.XML.Types
-import qualified Language.Haskell.HLint             as HLint (hlint)
 import           Test.QuickCheck
 import           Test.QuickCheck.Instances          ()
 import           Test.Tasty
@@ -18,7 +17,6 @@ import           Test.Tasty.QuickCheck
 main :: IO ()
 main = defaultMain $ testGroup "Tests"
   [ properties
-  , hlint
   ]
 
 properties :: TestTree
@@ -49,11 +47,6 @@ roundtripTest' :: Eq a => Show a
 roundtripTest' name render parse gen = testProperty ("parse . render = id (" <> name <> ")") $ do
   a <- gen
   return $ either (const False) (Just a ==) $ runConduit (render a =$= parse)
-
-hlint :: TestTree
-hlint = testCase "HLint check" $ do
-  result <- HLint.hlint [ "test/", "src/" ]
-  Prelude.null result @?= True
 
 -- | Generate 'UTCTime' with rounded seconds.
 genTime :: Gen UTCTime
