@@ -1,5 +1,5 @@
 name:                dublincore-xml-conduit
-version:             0.1.0.1
+version:             0.1.0.2
 synopsis:            XML streaming parser/renderer for the Dublin Core standard elements.
 description:         Cf README file.
 homepage:            https://github.com/k0ral/dublincore-xml-conduit
