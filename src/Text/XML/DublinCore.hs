@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+
 -- | Common XML definitions for the __Dublin Core Metadata Element Set__.
 --
 -- This module is meant to be imported qualified, like this:
@@ -7,10 +8,10 @@
 module Text.XML.DublinCore where
 
 -- {{{ Imports
-import           Data.Text
-import           URI.ByteString
--- }}}
+import Data.Text
+import URI.ByteString
 
+-- }}}
 
 -- | Standard XML prefix is @dc@.
 namespacePrefix :: Text
