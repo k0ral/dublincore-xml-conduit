@@ -39,14 +39,14 @@ properties = testGroup "Properties"
   ]
 
 roundtripTest :: Eq a => Show a => Arbitrary a
-              => TestName -> (a -> Source (Either e) Event) -> Consumer Event (Either e) (Maybe a) -> TestTree
-roundtripTest name render parse = testProperty ("parse . render = id (" <> name <> ")") $ \t -> either (const False) (Just t ==) (runConduit $ render t =$= parse)
+              => TestName -> (a -> ConduitT () Event (Either e) ()) -> ConduitT Event Void (Either e) (Maybe a) -> TestTree
+roundtripTest name render parse = testProperty ("parse . render = id (" <> name <> ")") $ \t -> either (const False) (Just t ==) (runConduit $ render t .| parse)
 
 roundtripTest' :: Eq a => Show a
-              => TestName -> (a -> Source (Either e) Event) -> Consumer Event (Either e) (Maybe a) -> Gen a -> TestTree
+              => TestName -> (a -> ConduitT () Event (Either e) ()) -> ConduitT Event Void (Either e) (Maybe a) -> Gen a -> TestTree
 roundtripTest' name render parse gen = testProperty ("parse . render = id (" <> name <> ")") $ do
   a <- gen
-  return $ either (const False) (Just a ==) $ runConduit (render a =$= parse)
+  return $ either (const False) (Just a ==) $ runConduit (render a .| parse)
 
 -- | Generate 'UTCTime' with rounded seconds.
 genTime :: Gen UTCTime
